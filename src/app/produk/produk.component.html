@@ -1,0 +1,30 @@
+<div class="container">
+
+  <!-- SEARCH -->
+  <app-search (searchText)="handleSearchText($event)"></app-search>
+
+  <!-- FILTER -->
+  <app-filter [all]="countAll" [inStock]="countInStock" [outOfStock]="countOutOfStock" (selectedFilterChanged)="onFilterChanged($event)"></app-filter>
+
+  <div class="row">
+
+    <div *ngFor="let item of listHandphone" class="col-md-4 my-3">
+      <!-- <div *ngIf="selectedFilter == 'all' || item.inStock.toString() == selectedFilter"> -->
+      <div *ngIf="item.merkHandphone.includes(searchText)">
+        <div class="card" style="width: 18rem;">
+          <img [src]="item.imgPath" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{item.merkHandphone}}</h5>
+            <p class="card-text">Harga : {{item.harga}}</p>
+            <p class="card-text">Diskon : {{item.discount + '%'}}</p>
+            <p class="card-text" [ngClass]="{'bold' : item.inStock}" [ngStyle]="{color : item.inStock ? 'Green' : 'Red'}">{{item.inStock ? 'Available In Stock' : 'Not Available In Stock'}}</p>
+            <a href="#" class="btn btn-primary" *ngIf="item.inStock">BUY</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
