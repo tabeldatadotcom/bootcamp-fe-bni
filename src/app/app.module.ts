@@ -8,6 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { ProdukComponent } from './produk/produk.component';
 import { FilterComponent } from './produk/filter/filter.component';
 import { SearchComponent } from './produk/search/search.component';
+import { FeatureBrandsComponent } from './produk/feature-brands/feature-brands.component';
+import { LifecycleComponent } from './lifecycle/lifecycle.component';
+import { LifecycleDemoComponent } from './lifecycle/lifecycle-demo/lifecycle-demo.component';
+import { SubscribeService } from './services/subscribe.service';
+import { AdminComponent } from './admin/admin.component';
+import { AdminListComponent } from './admin/admin-list/admin-list.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +21,19 @@ import { SearchComponent } from './produk/search/search.component';
     NavbarComponent,
     ProdukComponent,
     FilterComponent,
-    SearchComponent
+    SearchComponent,
+    FeatureBrandsComponent,
+    LifecycleComponent,
+    LifecycleDemoComponent,
+    AdminComponent,
+    AdminListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [SubscribeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

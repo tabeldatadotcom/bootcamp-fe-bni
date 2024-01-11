@@ -8,9 +8,9 @@
 
   <div class="row">
 
-    <div *ngFor="let item of listHandphone" class="col-md-4 my-3">
+    <ng-container *ngFor="let item of listHandphone">
       <!-- <div *ngIf="selectedFilter == 'all' || item.inStock.toString() == selectedFilter"> -->
-      <div *ngIf="item.merkHandphone.includes(searchText)">
+      <div *ngIf="item.merkHandphone.includes(searchText)" class="col-md-4 my-3">
         <div class="card" style="width: 18rem;">
           <img [src]="item.imgPath" class="card-img-top" alt="...">
           <div class="card-body">
@@ -18,13 +18,48 @@
             <p class="card-text">Harga : {{item.harga}}</p>
             <p class="card-text">Diskon : {{item.discount + '%'}}</p>
             <p class="card-text" [ngClass]="{'bold' : item.inStock}" [ngStyle]="{color : item.inStock ? 'Green' : 'Red'}">{{item.inStock ? 'Available In Stock' : 'Not Available In Stock'}}</p>
-            <a href="#" class="btn btn-primary" *ngIf="item.inStock">BUY</a>
+            <a href="#" class="btn btn-primary" *ngIf="item.inStock; else notifyMe">BUY</a>
+            <ng-template #notifyMe>
+              <a href="#" class="btn btn-danger">NOTIFY ME!</a>
+            </ng-template>
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
 
   </div>
 
 </div>
 
+<!-- NG-CONTENT -->
+<div class="container bg-secondary my-5">
+    <div class="row">
+
+      <div class="col-md-3 p-4">
+          <h1>Latest Arrival In Populer Brands</h1>
+          <button class="btn btn-primary" (click)="onSubscribe()">SUBSCRIBE</button>
+      </div>
+
+      <div class="col-md-3 p-4">
+          <app-feature-brands>
+              <h4 class="card-title" titleCard>New Arrivals In Iphone</h4>
+              <button class="btn btn-primary">Read More Iphone</button>
+          </app-feature-brands>
+      </div>
+
+      <div class="col-md-3 p-4">
+          <app-feature-brands>
+            <h4 class="card-title" titleCard>New Arrivals In Samsung</h4>
+            <button class="btn btn-primary">Read More samsung</button>
+          </app-feature-brands>
+      </div>
+
+      <div class="col-md-3 p-4">
+          <app-feature-brands>
+              <h4 class="card-title" titleCard>New Arrivals In Oppo</h4>
+              <button class="btn btn-primary">Read More Oppo</button>
+          </app-feature-brands>
+      </div>
+
+    </div>
+</div>

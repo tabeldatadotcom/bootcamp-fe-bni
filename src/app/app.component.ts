@@ -22,4 +22,18 @@ export class AppComponent {
     this.fullName = name
   }
 
+  // NG-Container
+  toggle : boolean = true;
+
+  onToggle(){
+    this.toggle = !this.toggle
+  }
+
+  // NG Switch
+  tab : string = '';
+
+  handleMenuChanged(event : any){
+    this.tab = event
+  }
+
 }

@@ -1,8 +1,37 @@
-<!-- <app-navbar></app-navbar>
-<app-produk></app-produk> -->
+<app-navbar (selectedMenuChange)="handleMenuChanged($event)"></app-navbar>
+<div [ngSwitch]="tab">
+  <app-produk *ngSwitchCase="'produk'"></app-produk>
+  <app-lifecycle *ngSwitchCase="'lifecycle'"></app-lifecycle>
+  <app-admin *ngSwitchDefault></app-admin>
+</div>
+
+<!-- NG-TEMPLATE -->
+<!-- <h2>Learn NG Template</h2>
+
+<ng-template #myTemplate>
+    <h2>Hello, I'm in NG-Template</h2>
+</ng-template>
+
+<div [ngTemplateOutlet]="myTemplate"></div> -->
+
+<!-- NG Container -->
+<!-- <h2>Learn NG Container</h2>
+
+<ng-container *ngIf="toggle; else toggleOff">
+    <p>Hello I'm Toggle True</p>
+</ng-container>
+<ng-template #toggleOff>
+    <p>Hello I'm Toggle False</p>
+</ng-template>
+<button (click)="onToggle()">Toggle</button> -->
+
+<!-- <div>
+    <p>Hello I'm In DIV</p>
+</div> -->
 
 
-<input type="text" placeholder="Input First Name..." #inputName>
+<!-- ViewChildren -->
+<!-- <input type="text" placeholder="Input First Name..." #inputName>
 <br>
 <input type="text" placeholder="Input Middle Name..." #inputName>
 <br>
@@ -10,4 +39,4 @@
 <br>
 <button type="submit" (click)="submitForm()">SUBMIT</button>
 <br>
-{{fullName}}
+{{fullName}} -->

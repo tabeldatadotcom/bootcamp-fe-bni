@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
+import { SubscribeService } from '../services/subscribe.service';
 
 @Component({
   selector: 'app-produk',
   templateUrl: './produk.component.html',
-  styleUrls: ['./produk.component.css']
+  styleUrls: ['./produk.component.css'],
 })
 export class ProdukComponent {
+
+    constructor(private subsService : SubscribeService){
+
+    }
+
     listHandphone : any[] = [
       {
         id : 1,
@@ -39,6 +45,12 @@ export class ProdukComponent {
     searchText : string = '';
     handleSearchText(event : any){
         this.searchText = event
+    }
+
+    onSubscribe(){
+        // let service = new SubscribeService();
+        // service.onSubscribeClicked();
+        this.subsService.onSubscribeClicked()
     }
 
 }
